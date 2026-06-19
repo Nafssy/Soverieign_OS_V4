@@ -18,24 +18,6 @@ Developed and maintained under the paradigm of Agentic Engineering—prioritizin
   
  -> Automation Layers: Integrated Windows scripting (launch-sovereign.bat and silent-boot.vbs) to enable zero-click, hidden background daemons for local application hosting.
 
- ## Repository Blueprint
- sovereign-os-v4/
-├── .gitignore              # Strict environment & machine-compiled isolation
-├── Caddyfile               # Local reverse proxy & domain routing architecture
-├── bun.lock                # Strict, immutable package lockfile
-├── components.json         # Component-system configuration state
-├── launch-sovereign.bat    # Automation script for local runtime instantiation
-├── silent-boot.vbs         # VBScript wrapper for headless daemon execution
-├── package.json            # Manifest of core engine dependencies
-├── tsconfig.json           # Monolithic TypeScript compiler configuration
-├── public/                 # Static asset delivery pipeline
-└── src/                    # Core Application Source (Decoupled Engine)
-    ├── app/                # Next.js App Router core layouts & API route endpoints
-    ├── components/         # Page modules (AcademicFortress, Barbell, DailyOS, TacticalStrike)
-    ├── context/            # Global state orchestrators (SovereignContext)
-    ├── data/               # Structurally typed static datasets (RESEARCH_DATA)
-    └── lib/                # Database configurations (db.ts) and utility pipelines
-
 
   ## Architectural Highlights
 ### Headless Workspace Automation
@@ -58,3 +40,24 @@ bun install
 
 # Instantiate the environment local proxy
 caddy start --config ./Caddyfile
+
+
+ ## ## Repository Blueprint
+
+```text
+sovereign-os-v4/
+├── .gitignore              # Strict environment & machine-compiled isolation
+├── Caddyfile               # Local reverse proxy & domain routing architecture
+├── bun.lock                # Strict, immutable package lockfile
+├── components.json         # Component-system configuration state
+├── launch-sovereign.bat    # Automation script for local runtime instantiation
+├── silent-boot.vbs         # VBScript wrapper for headless daemon execution
+├── package.json            # Manifest of core engine dependencies
+├── tsconfig.json           # Monolithic TypeScript compiler configuration
+├── public/                 # Static asset delivery pipeline
+└── src/                    # Core Application Source (Decoupled Engine)
+    ├── app/                # Next.js App Router core layouts & API route endpoints
+    ├── components/         # Page modules (AcademicFortress, Barbell, DailyOS, TacticalStrike)
+    ├── context/            # Global state orchestrators (SovereignContext)
+    ├── data/               # Structurally typed static datasets (RESEARCH_DATA)
+    └── lib/                # Database configurations (db.ts) and utility pipelines
