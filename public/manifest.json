@@ -1,0 +1,16 @@
+{
+  "name": "Sovereign OS v4.0",
+  "short_name": "Sovereign",
+  "description": "Tactical A-Level & Quant Command Interface",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0908",
+  "theme_color": "#0a0908",
+  "icons": [
+    {
+      "src": "/icon.png?v=2",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ]
+}

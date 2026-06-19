@@ -1,0 +1,428 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-space-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Sovereign OS custom colors */
+  --color-sov-bg: #0a0908;
+  --color-sov-surface: #111009;
+  --color-sov-white: #F0EDE6;
+  --color-sov-muted: #7a7570;
+  --color-sov-gold: #C9A84C;
+  --color-sov-gold-glow: rgba(201, 168, 76, 0.15);
+  --color-sov-gold-border: rgba(201, 168, 76, 0.18);
+  --color-sov-border-dim: rgba(201, 168, 76, 0.07);
+
+  --color-dash-bg: #0a0a0b;
+  --color-dash-surface: #111114;
+  --color-dash-text: #e8e8f0;
+  --color-dash-text-sec: #9898b0;
+  --color-dash-nafs: #7c6bff;
+  --color-dash-nafs-dim: rgba(124, 107, 255, 0.15);
+  --color-dash-green: #1fb97a;
+  --color-dash-amber: #e8a030;
+  --color-dash-red: #e85050;
+  --color-dash-blue: #4a9fff;
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: #0a0908;
+  --foreground: #F0EDE6;
+  --card: #111009;
+  --card-foreground: #F0EDE6;
+  --popover: #111009;
+  --popover-foreground: #F0EDE6;
+  --primary: #C9A84C;
+  --primary-foreground: #0a0908;
+  --secondary: #1a1914;
+  --secondary-foreground: #F0EDE6;
+  --muted: #1a1914;
+  --muted-foreground: #7a7570;
+  --accent: rgba(201, 168, 76, 0.15);
+  --accent-foreground: #F0EDE6;
+  --destructive: #e85050;
+  --border: rgba(201, 168, 76, 0.18);
+  --input: rgba(201, 168, 76, 0.12);
+  --ring: #C9A84C;
+  --chart-1: #C9A84C;
+  --chart-2: #7c6bff;
+  --chart-3: #1fb97a;
+  --chart-4: #e8a030;
+  --chart-5: #4a9fff;
+  --sidebar: #0a0908;
+  --sidebar-foreground: #F0EDE6;
+  --sidebar-primary: #C9A84C;
+  --sidebar-primary-foreground: #0a0908;
+  --sidebar-accent: rgba(201, 168, 76, 0.1);
+  --sidebar-accent-foreground: #F0EDE6;
+  --sidebar-border: rgba(201, 168, 76, 0.12);
+  --sidebar-ring: #C9A84C;
+
+  --font-space-mono: 'Space Mono', monospace;
+  --font-space-grotesk: 'Space Grotesk', sans-serif;
+  --font-syne: 'Syne', sans-serif;
+  --font-dm-sans: 'DM Sans', sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-dm-sans);
+  }
+}
+
+/* ===== SOVEREIGN OS KEYFRAMES ===== */
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes pulse-nafs {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fillBar {
+  from { width: 0%; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 4px rgba(201, 168, 76, 0.2); }
+  50% { box-shadow: 0 0 12px rgba(201, 168, 76, 0.4); }
+}
+
+/* ===== SOVEREIGN OS BASE STYLES ===== */
+
+.sov-font-mono {
+  font-family: var(--font-space-mono);
+}
+
+.sov-font-grotesk {
+  font-family: var(--font-space-grotesk);
+}
+
+.sov-font-syne {
+  font-family: var(--font-syne);
+}
+
+.sov-font-dm {
+  font-family: var(--font-dm-sans);
+}
+
+/* Tier 1 Strategic card */
+.sov-card {
+  background: #111009;
+  border: 0.5px solid rgba(201, 168, 76, 0.18);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.sov-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(201, 168, 76, 0.4);
+}
+
+/* Tier 2 Operational card */
+.dash-card {
+  background: #111114;
+  border: 0.5px solid rgba(124, 107, 255, 0.12);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.dash-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(124, 107, 255, 0.3);
+}
+
+/* Gold fill bar */
+.sov-bar-fill {
+  background: linear-gradient(90deg, #C9A84C, #d4b85c);
+  animation: fillBar 0.6s ease-out;
+  border-radius: 2px;
+}
+
+/* Purple/Nafs fill bar */
+.dash-bar-fill {
+  background: linear-gradient(90deg, #7c6bff, #9585ff);
+  animation: fillBar 0.6s ease-out;
+  border-radius: 2px;
+}
+
+/* Ghost letter watermark */
+.ghost-letter {
+  position: absolute;
+  font-family: var(--font-space-grotesk);
+  font-size: 120px;
+  font-weight: 700;
+  color: rgba(201, 168, 76, 0.04);
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+/* Pulsing connector dot */
+.connector-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #C9A84C;
+  animation: pulse-gold 2s ease-in-out infinite;
+}
+
+/* Scrollbar styling */
+.sov-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.sov-scrollbar::-webkit-scrollbar-track {
+  background: rgba(201, 168, 76, 0.05);
+}
+.sov-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.2);
+  border-radius: 3px;
+}
+.sov-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 168, 76, 0.35);
+}
+
+.dash-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.dash-scrollbar::-webkit-scrollbar-track {
+  background: rgba(124, 107, 255, 0.05);
+}
+.dash-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(124, 107, 255, 0.2);
+  border-radius: 3px;
+}
+.dash-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 107, 255, 0.35);
+}
+
+/* Nav item active indicator */
+.nav-item-active {
+  color: #C9A84C !important;
+  border-left: 2px solid #C9A84C;
+  padding-left: calc(1rem - 2px);
+}
+
+/* Topic state colors */
+.topic-unread { color: #9898b0; }
+.topic-read { color: #4a9fff; }
+.topic-practice { color: #e8a030; }
+.topic-mastered { color: #1fb97a; }
+
+.topic-dot-unread { background: #9898b0; }
+.topic-dot-read { background: #4a9fff; }
+.topic-dot-practice { background: #e8a030; }
+.topic-dot-mastered { background: #1fb97a; }
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Form elements for dark sovereign theme */
+.sov-select, .sov-input {
+  background: rgba(201, 168, 76, 0.08);
+  border: 0.5px solid rgba(201, 168, 76, 0.18);
+  color: #F0EDE6;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-family: var(--font-space-mono);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.sov-select:focus, .sov-input:focus {
+  border-color: rgba(201, 168, 76, 0.5);
+}
+.sov-select option {
+  background: #111009;
+  color: #F0EDE6;
+}
+
+/* Calendar specific */
+.cal-cell {
+  aspect-ratio: 1 / 1;
+  min-height: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border: 0.5px solid rgba(124, 107, 255, 0.18);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--font-space-mono);
+  font-size: 12px;
+  color: #9898b0;
+}
+.cal-cell:hover {
+  border-color: rgba(124, 107, 255, 0.3);
+  background: rgba(124, 107, 255, 0.05);
+}
+.cal-cell.today {
+  border-color: rgba(201, 168, 76, 0.6);
+  color: #C9A84C;
+  background: rgba(201, 168, 76, 0.08);
+}
+.cal-cell.selected {
+  border-color: #7c6bff;
+  background: rgba(124, 107, 255, 0.12);
+  color: #e8e8f0;
+}
+
+/* Hour row in timeline — background grid line + label only. Blocks render in a
+   separate absolutely-positioned layer (see .timeline-track / .timeline-block)
+   so a block's box can visually span multiple hour-rows based on duration. */
+.hour-row {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-bottom: 0.5px solid rgba(124, 107, 255, 0.06);
+  padding: 2px 8px;
+  font-family: var(--font-space-mono);
+  font-size: 11px;
+  box-sizing: border-box;
+}
+
+/* Wraps the 24 hour-rows + the absolutely-positioned block overlay.
+   Height = 24 * .hour-row height, set inline from ROW_HEIGHT in the component. */
+.timeline-track {
+  position: relative;
+}
+
+/* Block in timeline — absolutely positioned over the hour-row grid.
+   top/height/left/right are set inline per-block from start/end hour. */
+.timeline-block {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-family: var(--font-space-mono);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.timeline-block.academic {
+  background: rgba(124, 107, 255, 0.16);
+  border: 0.5px solid rgba(124, 107, 255, 0.35);
+  color: #e8e8f0;
+}
+.timeline-block.custom {
+  background: rgba(201, 168, 76, 0.14);
+  border: 0.5px solid rgba(201, 168, 76, 0.35);
+  color: #F0EDE6;
+}
+
+
+
+
+/* ===== GLOBAL DEEP-DARK WINDOWS & FRAME OVERRIDES ===== */
+
+/* 1. Universal Root/Window Scrollbars (Affects the far right browser/PWA track) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0908; /* Blends seamlessly with your system background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1914; /* Muted charcoal grey */
+  border: 2px solid #0a0908; /* Gives a floating edge look */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C9A84C; /* Sovereign gold highlight on hover action */
+}
+
+/* 2. Overriding Existing Scrollbar Track Classes to eliminate light tones */
+.sov-scrollbar::-webkit-scrollbar-track {
+  background: #0a0908;
+}
+
+.sov-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.15); /* Sleek gold hue */
+  border-radius: 3px;
+}
+
+.dash-scrollbar::-webkit-scrollbar-track {
+  background: #0a0a0b;
+}
+
+.dash-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(124, 107, 255, 0.15); /* Sleek tactical purple hue */
+  border-radius: 3px;
+}
+
+/* 3. Global Firefox engine compliance */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1a1914 #0a0908;
+}
