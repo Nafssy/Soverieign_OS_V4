@@ -1,0 +1,1 @@
+CreateObject("Wscript.Shell").Run "E:\Coding\sovereign-os-v4\launch-sovereign.bat", 0, False
